@@ -8,7 +8,4 @@ var Post = new Schema({
   content: String
 });
 
-
-// mongoose.connect(process.env.MONGO_URI);
-
 module.exports = mongoose.model('posts', Post);

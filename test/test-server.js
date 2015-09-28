@@ -13,17 +13,15 @@ chai.use(chaiHttp);
 
 describe('Posts', function(){
 
-  Post.collection.drop();
-
   beforeEach(function(done){
+    Post.collection.drop();
     var newPost = new Post({
       title: 'test Title',
       description: 'testing out the routes',
       content: 'This is where the content of the page goes. ###___ ````'
     });
-    newPost.save(function(err){
-      done();
-    });
+    newPost.save();
+    done();
   });
 
   afterEach(function(done){
@@ -47,27 +45,6 @@ describe('Posts', function(){
       done();
     });
   });
-
-  // it('should list a single post on /post/:id get', function(done){
-
-  //   var newPost = new Post({
-  //     title : 'single get post',
-  //     description : 'just get one',
-  //     content : 'this is where content goes'
-  //   });
-
-  //   newPost.save(function(err, data){
-  //     chai.request(server)
-  //     .get('/api/v1/post/' + data.id)
-  //     .end(function(err, res){
-  //       res.should.have.status(200);
-  //       res.should.be.json;
-  //       res.should.be.a('object');
-
-  //       done();
-  //     });
-  //   });
-  // });
 
   it('should add a single blog post on /posts', function(done){
     chai.request(server)
